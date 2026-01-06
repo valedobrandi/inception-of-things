@@ -1,0 +1,16 @@
+k3s kubectl get nodes -o wide
+k3s kubectl get pods -A
+k3s kubectl get all -n kube-system
+k3s kubectl get all
+k3s kubectl get deployments
+watch -n 1 k3s kubectl get pods -n kube-system
+curl -H "HOST:app2.com" 192.168.56.110
+sudo journalctl -u k3s
+
+vagrant up --provision --debug
+
+kubectl port-forward svc/argocd-server -n argocd 8080:443
+
+
+kubectl -n argocd get secret argocd-initial-admin-secret \
+  -o jsonpath="{.data.password}" | base64 -d
