@@ -1,14 +1,15 @@
 #!/usr/bin/env bash
-set -euo pipefail
+set -eux
+
+sudo apt update
+sudo apt install -y curl
+
 sudo hostnamectl set-hostname bobS
 
-sudo cp /home/vagrant/k3s-offline/k3s /usr/local/bin/k3s
-sudo chmod +x /usr/local/bin/k3s
-
-INSTALL_K3S_SKIP_DOWNLOAD=true \
-    /home/vagrant/k3s-offline/install.sh \
+curl -sfL https://get.k3s.io | \
+INSTALL_K3S_EXEC="server \
     --write-kubeconfig-mode=644 \
     --write-kubeconfig-group=vagrant \
-    --node-external-ip=192.168.56.110 \
-    --flannel-iface=eth1 \
-    --token supersecret
+    --node-ip=192.168.56.110 \
+    --flannel-iface=eth0  \
+    --token supersecret " sh -

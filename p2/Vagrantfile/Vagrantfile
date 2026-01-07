@@ -1,8 +1,7 @@
 Vagrant.configure("2") do |config|
-    config.vm.synced_folder ".", "/vagrant", type: "rsync", disabled: true
+    config.vm.synced_folder ".", "/vagrant", type: "rsync"
     config.vm.box = "debian/bookworm64"
-    config.vm.synced_folder "/home/bde-albu/Inception-of-Things/p2/confs", "/home/vagrant/confs", type: "rsync"
-    config.vm.synced_folder "/home/bde-albu/bin/k3s-offline", "/home/vagrant/k3s-offline", type: "rsync"
+    config.vm.synced_folder "../confs", "/confs", type: "rsync"
 
     config.vm.provider :libvirt do |lv|
         lv.cpus = 1

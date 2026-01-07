@@ -1,22 +1,21 @@
+ENV['VAGRANT_NO_PARALLEL'] = 'yes'
 Vagrant.configure("2") do |config|
     config.vm.synced_folder ".", "/vagrant", type: "rsync", disabled: true
     config.vm.box = "debian/bookworm64"
-    config.vm.synced_folder "/home/bde-albu/bin/k3s-offline", "/home/vagrant/k3s-offline", type: "rsync"
-
 
     config.vm.provider :libvirt do |lv|
         lv.cpus = 1
         lv.memory = "1024"
     end
 
-    config.vm.define "bobS" do |server|
-        server.vm.hostname = "bobS" 
+    config.vm.define "bob" do |server|
+        server.vm.hostname = "bob" 
         server.vm.network "private_network", 
             ip: "192.168.56.110"
         server.vm.provision "shell", path: "../scripts/server.sh"
     end
-    config.vm.define "kevinSW" do |server|
-        server.vm.hostname = "kevinSW" 
+    config.vm.define "kevin" do |server|
+        server.vm.hostname = "kevin" 
         server.vm.network "private_network", 
             ip: "192.168.56.111"
         server.vm.provision "shell", path: "../scripts/worker.sh"
