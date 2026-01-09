@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: http://github.local/root/inception.git
+    repoURL: http://gitlab.gitlab.svc.cluster.local/root/inception.git
     targetRevision: HEAD
     path: manifests
   destination:
@@ -16,3 +16,5 @@ spec:
     automated:
       prune: true
       selfHeal: true
+
+
