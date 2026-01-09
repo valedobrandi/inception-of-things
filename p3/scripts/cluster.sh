@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 k3d cluster create inception-of-things -p "8888:30080@loadbalancer"
 
 kubectl create namespace argocd
