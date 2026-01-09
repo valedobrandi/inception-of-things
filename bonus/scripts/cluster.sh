@@ -12,6 +12,6 @@ kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/st
 kubectl apply -n gitlab -f ../confs/gitlab.yaml
 
 # Port-forward ArgoCD server
-kubectl port-forward -n argocd svc/argocd-server 8080:80
+kubectl port-forward -n argocd svc/argocd-server 8080:80 /dev/null 2>&1 &
 # Port-forward GitLab webservice
-kubectl port-forward -n gitlab svc/gitlab-webservice-default 8181:80
+kubectl port-forward -n gitlab svc/gitlab-webservice-default 8181:80 /dev/null 2>&1 &
