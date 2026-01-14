@@ -19,7 +19,6 @@ spec:
     - name: GITLAB_OMNIBUS_CONFIG
       value: |
         external_url 'http://gitlab.local';
-        gitlab_rails['initial_password'] = 'Inception1234!';
         nginx['listen_port'] = 80;
         nginx['listen_https'] = false;
         puma['worker_processes']=0;
