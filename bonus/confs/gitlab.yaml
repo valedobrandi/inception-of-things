@@ -18,9 +18,10 @@ spec:
     env:
     - name: GITLAB_OMNIBUS_CONFIG
       value: |
-        external_url 'http://gitlab.local';
+        external_url 'http://gitlab.localhost';
         nginx['listen_port'] = 80;
         nginx['listen_https'] = false;
+        gitlab_rails['gitlab_shell_ssh_port'] = 32000;
         puma['worker_processes']=0;
         sidekiq['concurrency']=1;
         gitaly['cgroups_enabled'] = false;
